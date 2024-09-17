@@ -5,6 +5,7 @@ class Gameboard {
     #board
     #ships
     #missedAttacks
+    #allHits
 
     constructor(size = 10) {
         this.#ships = []
@@ -13,6 +14,7 @@ class Gameboard {
         this.#board = Array(size)
             .fill()
             .map((_, i) => Array(size).fill(null))
+        this.#allHits = []
     }
 
     placeShip = (row, column, ship, isVertical) => {
@@ -50,6 +52,7 @@ class Gameboard {
     receiveAttack = (row, column) => {
         if(this.#board[row][column] instanceof Ship){
             this.#board[row][column].hit()
+            this.#allHits.push([row, column])
             return true
         } else {
             this.#missedAttacks.push([row, column])
@@ -71,6 +74,10 @@ class Gameboard {
 
     getMissedAttacks = () => {
         return this.#missedAttacks
+    }
+
+    getAllHists = () => {
+        return this.#allHits
     }
 }
 

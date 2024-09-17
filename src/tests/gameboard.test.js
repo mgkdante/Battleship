@@ -79,6 +79,16 @@ test('Receive Attack MISSED', () => {
   expect(gameboard.getMissedAttacks()).toEqual([[9,9]])
 })
 
+test('Place all ships', () => {
+  gameboard.placeShip(0,0, carrier, true)
+  gameboard.placeShip(0,1, destroyer, false)
+  gameboard.placeShip(1,1, battleship, false)
+  gameboard.placeShip(2,1, submarine, true)
+  gameboard.placeShip(2,2, patrol, false)
+
+  expect(gameboard.getShips()).toStrictEqual([carrier, destroyer, battleship, submarine, patrol])
+})
+
 test('All Ships are sunk', () => {
   gameboard.placeShip(0,0, carrier, true)
   gameboard.placeShip(0,1, destroyer, false)
