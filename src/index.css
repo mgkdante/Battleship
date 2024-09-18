@@ -1,6 +1,16 @@
+dialog::backdrop {
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.5rem);
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
 .row {
   height: 50px;
-  width: 50%;
   display: flex;
 }
 
@@ -10,8 +20,8 @@
   border: 1px black solid;
 }
 
-.filled {
-  background: black;
+.ship {
+  background: blue;
   color: white;
 }
 

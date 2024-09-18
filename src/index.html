@@ -1,14 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Battleship</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Battleship</title>
+  </head>
+  <body>
+    <dialog>
+      <form method="dialog">
+        <label>Please enter your name: </label>
+        <input type="text" />
+        <button type="button">Accept</button>
+      </form>
+    </dialog>
+    <h1>Battleship</h1>
     <main class="main">
-        <h1>Battleship</h1>
+      <article>
+        <h1 id="player-name">Player name</h1>
         <div id="player-board"></div>
+        <button id="generate-random">Generate Random Ships</button>
+      </article>
+      <article>
+        <h1 id="computer-name">Computer</h1>
         <div id="enemy-board"></div>
-</body>
+      </article>
+    </main>
+  </body>
 </html>
