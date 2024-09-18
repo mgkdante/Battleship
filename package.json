@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "This a The Odin Project assignment to recreate the game Battleship",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "build": "webpack --config webpack.prod.js",

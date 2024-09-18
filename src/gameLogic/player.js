@@ -2,9 +2,8 @@ import {Gameboard} from "./gameboard.js";
 class Player {
     #name
 
-    constructor(name, isComputer = false) {
+    constructor(name) {
         this.#name = name
-        this.isComputer = isComputer
         this.gameboard = new Gameboard()
     }
 

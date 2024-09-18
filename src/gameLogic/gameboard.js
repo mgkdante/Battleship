@@ -79,6 +79,10 @@ class Gameboard {
     getAllHists = () => {
         return this.#allHits
     }
+
+    getSize = () => {
+        return this.#size
+    }
 }
 
 export {Gameboard}

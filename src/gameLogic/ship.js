@@ -13,7 +13,7 @@ class Ship {
 
   hit = () => {
     this.#hits += 1
-    if (this.#hits === this.#length) {
+    if (this.#hits === this.#length + 1) {
       this.#sunk = true
     }
   }

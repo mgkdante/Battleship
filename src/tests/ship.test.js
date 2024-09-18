@@ -1,4 +1,4 @@
-import { Ship } from "../gameLogic/Ship.js"
+import { Ship } from "../gameLogic/ship.js"
 let ship
 
 beforeEach(() => {
