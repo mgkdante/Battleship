@@ -25,12 +25,12 @@ main {
   color: white;
 }
 
-.is-ship {
+.hit {
   background: green;
   color: white;
 }
 
-.is-not-ship {
+.miss {
   background: red;
   color: white;
 }

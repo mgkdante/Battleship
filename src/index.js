@@ -11,6 +11,7 @@ const inputName = dialog.querySelector("input")
 const playerBoard = document.getElementById("player-board")
 const enemyBoard = document.getElementById("enemy-board")
 const generateRandomButton = document.getElementById("generate-random")
+const playerTitle = document.getElementById("player-name")
 
 const initializeGame = () => {
   enemy = new Player("Enemy")
@@ -27,6 +28,8 @@ const initializeGame = () => {
     player = new Player(playerName)
     renderBoard(player.gameboard, playerBoard)
     renderBoard(enemy.gameboard, enemyBoard)
+    placeGameShips(enemy.gameboard)
+    playerTitle.textContent = playerName
     inputName.value = ""
     dialog.close()
   })
