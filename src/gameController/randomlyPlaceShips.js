@@ -1,5 +1,5 @@
 import { Ship } from "../gameLogic/ship"
-const placeGameShips = (gameboard) => {
+const randomlyPlaceShips = (gameboard) => {
   let ships = [
     new Ship(5, "Carrier"),
     new Ship(4, "Battleship"),
@@ -24,4 +24,4 @@ const placeGameShips = (gameboard) => {
   })
 }
 
-export { placeGameShips }
+export { randomlyPlaceShips }

@@ -1,6 +1,6 @@
 import { Player } from "./gameLogic/player.js"
 import { renderBoard } from "./gameUI/renderBoard.js"
-import { placeGameShips } from "./gameController/placeGameShips.js"
+import { randomlyPlaceShips } from "./gameController/randomlyPlaceShips.js"
 import { renderShips } from "./gameUI/renderShips.js"
 import "./index.css"
 
@@ -14,7 +14,7 @@ const generateRandomButton = document.getElementById("generate-random")
 const playerTitle = document.getElementById("player-name")
 
 const initializeGame = () => {
-  enemy = new Player("Enemy")
+  enemy = new Player("Enemy", true)
   dialog.showModal()
   dialog.addEventListener("cancel", (event) => event.preventDefault())
 
@@ -26,9 +26,10 @@ const initializeGame = () => {
       return
     }
     player = new Player(playerName)
-    renderBoard(player.gameboard, playerBoard)
-    renderBoard(enemy.gameboard, enemyBoard)
-    placeGameShips(enemy.gameboard)
+    renderBoard(player, playerBoard)
+    renderBoard(enemy, enemyBoard)
+    randomlyPlaceShips(enemy.gameboard)
+    renderShips(enemy) //to remove
     playerTitle.textContent = playerName
     inputName.value = ""
     dialog.close()
@@ -38,6 +39,6 @@ const initializeGame = () => {
 initializeGame()
 
 generateRandomButton.addEventListener("click", () => {
-  placeGameShips(player.gameboard)
-  renderShips(player.gameboard)
+  randomlyPlaceShips(player.gameboard)
+  renderShips(player)
 })

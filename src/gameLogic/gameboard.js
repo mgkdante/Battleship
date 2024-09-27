@@ -84,7 +84,7 @@ class Gameboard {
     return this.#missedAttacks
   }
 
-  getAllHists = () => {
+  getAllHits = () => {
     return this.#allHits
   }
 
