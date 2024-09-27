@@ -20,7 +20,7 @@ const updateGameUI = (player) => {
   if (isAllSunk) {
     gameOver()
   } else {
-    playerTurn()
+    // playerTurn(player, enemy)
   }
 }
 

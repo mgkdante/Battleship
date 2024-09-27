@@ -16,11 +16,6 @@ const renderAttacks = (player, row, column) => {
     player.gameboard.receiveAttack(row, column)
     cell.appendChild(newElement)
   }
-  return {
-    missedAttack: player.gameboard.getMissedAttacks(),
-    hits: player.gameboard.getAllHits(),
-    isAllSunk: player.gameboard.isAllSunk(),
-  }
 }
 
 export { renderAttacks }
