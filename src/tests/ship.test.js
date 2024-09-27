@@ -1,4 +1,5 @@
 import { Ship } from "../gameLogic/ship.js"
+import { expect, test, beforeEach } from "bun:test"
 let ship
 
 beforeEach(() => {

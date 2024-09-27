@@ -1,6 +1,7 @@
 import { Player } from "../gameLogic/player.js"
 import { Gameboard } from "../gameLogic/gameboard.js"
 import { Ship } from "../gameLogic/ship.js"
+import { expect, test, beforeEach } from "bun:test"
 
 let player
 let enemy
@@ -29,6 +30,6 @@ beforeEach(() => {
 
 test("Test attack", () => {
   player.attack(enemyGameboard, 1, 1)
-  expect(enemyGameboard.getAllHists()).toStrictEqual([[1, 1]])
+  expect(enemyGameboard.getAllHits()).toStrictEqual([[1, 1]])
   expect(enemyGameboard.getMissedAttacks()).toStrictEqual([])
 })

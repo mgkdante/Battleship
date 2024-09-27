@@ -1,5 +1,6 @@
 import { Gameboard } from "../gameLogic/gameboard.js"
 import { Ship } from "../gameLogic/ship.js"
+import { expect, test, beforeEach } from "bun:test"
 
 let gameboard
 let carrier
@@ -99,32 +100,37 @@ test("All Ships are sunk", () => {
   gameboard.placeShip(2, 2, patrol, false)
 
   // Simulate attacking all ships
-  gameboard.receiveAttack(0, 0) // Carrier hit
-  gameboard.receiveAttack(1, 0) // Carrier hit
-  gameboard.receiveAttack(2, 0) // Carrier hit
-  gameboard.receiveAttack(3, 0) // Carrier hit
-  gameboard.receiveAttack(4, 0) // Carrier hit
+  gameboard.receiveAttack(0, 0)
+  gameboard.receiveAttack(1, 0)
+  gameboard.receiveAttack(2, 0)
+  gameboard.receiveAttack(3, 0)
+  gameboard.receiveAttack(4, 0)
   expect(carrier.getHits()).toBe(5)
+  expect(carrier.isSunk()).toBe(true)
 
-  gameboard.receiveAttack(0, 1) // Destroyer hit
-  gameboard.receiveAttack(0, 2) // Destroyer hit
-  gameboard.receiveAttack(0, 3) // Destroyer hit
+  gameboard.receiveAttack(0, 1)
+  gameboard.receiveAttack(0, 2)
+  gameboard.receiveAttack(0, 3)
   expect(destroyer.getHits()).toBe(3)
+  expect(destroyer.isSunk()).toBe(true)
 
-  gameboard.receiveAttack(1, 1) // Battleship hit
-  gameboard.receiveAttack(1, 2) // Battleship hit
-  gameboard.receiveAttack(1, 3) // Battleship hit
-  gameboard.receiveAttack(1, 4) // Battleship hit
+  gameboard.receiveAttack(1, 1)
+  gameboard.receiveAttack(1, 2)
+  gameboard.receiveAttack(1, 3)
+  gameboard.receiveAttack(1, 4)
   expect(battleship.getHits()).toBe(4)
+  expect(battleship.isSunk()).toBe(true)
 
-  gameboard.receiveAttack(3, 1) // Submarine hit
-  gameboard.receiveAttack(4, 1) // Submarine hit
-  gameboard.receiveAttack(5, 1) // Submarine hit
+  gameboard.receiveAttack(2, 1)
+  gameboard.receiveAttack(3, 1)
+  gameboard.receiveAttack(4, 1)
   expect(submarine.getHits()).toBe(3)
+  expect(submarine.isSunk()).toBe(true)
 
-  gameboard.receiveAttack(2, 2) // Patrol hit
-  gameboard.receiveAttack(2, 3) // Patrol hit
+  gameboard.receiveAttack(2, 2)
+  gameboard.receiveAttack(2, 3)
   expect(patrol.getHits()).toBe(2)
+  expect(patrol.isSunk()).toBe(true)
 
   // Assert that all ships are sunk
   expect(gameboard.isAllSunk()).toBe(true)
@@ -137,33 +143,39 @@ test("NOT All Ships are sunk", () => {
   gameboard.placeShip(2, 1, submarine, true)
   gameboard.placeShip(2, 2, patrol, false)
 
-  // Simulate attacking all ships
-  gameboard.receiveAttack(0, 0) // Carrier hit
-  gameboard.receiveAttack(1, 0) // Carrier hit
-  gameboard.receiveAttack(2, 0) // Carrier hit
-  gameboard.receiveAttack(3, 0) // Carrier hit
+  // Simulate attacking all ships except one
+  gameboard.receiveAttack(0, 0)
+  gameboard.receiveAttack(1, 0)
+  gameboard.receiveAttack(2, 0)
+  gameboard.receiveAttack(3, 0)
+  // Don't hit the last position of the carrier
   expect(carrier.getHits()).toBe(4)
+  expect(carrier.isSunk()).toBe(false)
 
-  gameboard.receiveAttack(0, 1) // Destroyer hit
-  gameboard.receiveAttack(0, 2) // Destroyer hit
-  gameboard.receiveAttack(0, 3) // Destroyer hit
+  gameboard.receiveAttack(0, 1)
+  gameboard.receiveAttack(0, 2)
+  gameboard.receiveAttack(0, 3)
   expect(destroyer.getHits()).toBe(3)
+  expect(destroyer.isSunk()).toBe(true)
 
-  gameboard.receiveAttack(1, 1) // Battleship hit
-  gameboard.receiveAttack(1, 2) // Battleship hit
-  gameboard.receiveAttack(1, 3) // Battleship hit
-  gameboard.receiveAttack(1, 4) // Battleship hit
+  gameboard.receiveAttack(1, 1)
+  gameboard.receiveAttack(1, 2)
+  gameboard.receiveAttack(1, 3)
+  gameboard.receiveAttack(1, 4)
   expect(battleship.getHits()).toBe(4)
+  expect(battleship.isSunk()).toBe(true)
 
-  gameboard.receiveAttack(3, 1) // Submarine hit
-  gameboard.receiveAttack(4, 1) // Submarine hit
-  gameboard.receiveAttack(5, 1) // Submarine hit
+  gameboard.receiveAttack(2, 1)
+  gameboard.receiveAttack(3, 1)
+  gameboard.receiveAttack(4, 1)
   expect(submarine.getHits()).toBe(3)
+  expect(submarine.isSunk()).toBe(true)
 
-  gameboard.receiveAttack(2, 2) // Patrol hit
-  gameboard.receiveAttack(2, 3) // Patrol hit
+  gameboard.receiveAttack(2, 2)
+  gameboard.receiveAttack(2, 3)
   expect(patrol.getHits()).toBe(2)
+  expect(patrol.isSunk()).toBe(true)
 
-  // Assert that all ships are sunk
+  // Assert that not all ships are sunk
   expect(gameboard.isAllSunk()).toBe(false)
 })
