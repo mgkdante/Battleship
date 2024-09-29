@@ -12,19 +12,17 @@ class Gameboard {
     this.#missedAttacks = []
     this.#size = size
     this.#board = Array(size)
-      .fill()
-      .map((_, i) => Array(size).fill(null))
+      .fill(null)
+      .map(() => Array(size).fill(null))
     this.#allHits = []
   }
 
   placeShip = (row, column, ship, isVertical) => {
     if (this.canPlaceShip(row, column, ship, isVertical)) {
       for (let i = 0; i < ship.getLength(); i++) {
-        if (isVertical) {
-          this.#board[row + i][column] = ship
-        } else {
-          this.#board[row][column + i] = ship
-        }
+        const currentRow = isVertical ? row + i : row
+        const currentColumn = isVertical ? column : column + i
+        this.#board[currentRow][currentColumn] = ship
       }
       this.#ships.push(ship)
       return true
@@ -41,17 +39,11 @@ class Gameboard {
     ) {
       return false
     }
-    if (this.#board[row][column] instanceof Ship) {
-      return false
-    } else {
-      for (let i = 0; i < ship.getLength(); i++) {
-        if (
-          isVertical
-            ? this.#board[row + i][column] instanceof Ship
-            : this.#board[row][column + i] instanceof Ship
-        ) {
-          return false
-        }
+    for (let i = 0; i < ship.getLength(); i++) {
+      const currentRow = isVertical ? row + i : row
+      const currentColumn = isVertical ? column : column + i
+      if (this.#board[currentRow][currentColumn] instanceof Ship) {
+        return false
       }
     }
     return true
@@ -70,6 +62,15 @@ class Gameboard {
 
   isAllSunk = () => {
     return this.#ships.every((ship) => ship.isSunk())
+  }
+
+  clearBoard = () => {
+    this.#board = Array(this.#size)
+      .fill(null)
+      .map(() => Array(this.#size).fill(null))
+    this.#ships = []
+    this.#missedAttacks = []
+    this.#allHits = []
   }
 
   getBoard = () => {

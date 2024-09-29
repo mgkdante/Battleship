@@ -1,4 +1,4 @@
-import { Ship } from "../gameLogic/ship"
+import { Ship } from "../gameLogic/ship.js"
 
 const renderAttacks = (player, row, column) => {
   const cell = document.getElementById(
@@ -13,6 +13,7 @@ const renderAttacks = (player, row, column) => {
     } else {
       newElement.classList.add("miss")
     }
+
     player.gameboard.receiveAttack(row, column)
     cell.appendChild(newElement)
   }

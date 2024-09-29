@@ -1,12 +1,12 @@
-const gameOver = () => {
-  let body = document.querySelector("body")
-  let gameOverElement = document.createElement("dialog")
+const gameOver = (winnerName) => {
+  const body = document.querySelector("body")
+  const gameOverElement = document.createElement("dialog")
   gameOverElement.classList.add("game-over")
 
-  let gameOverText = document.createElement("p")
-  gameOverText.textContent = "Game Over"
+  const gameOverText = document.createElement("p")
+  gameOverText.textContent = `Game Over. ${winnerName} wins!`
 
-  let reloadButton = document.createElement("button")
+  const reloadButton = document.createElement("button")
   reloadButton.textContent = "Play Again"
   reloadButton.addEventListener("click", () => {
     location.reload()
