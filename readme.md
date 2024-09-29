@@ -1,6 +1,6 @@
 # Battleship Game
-[Play the Battleship Game](https://mgkdante.github.io/Battleship/)
 
+[Play the Battleship Game](https://mgkdante.github.io/Battleship/)
 
 Welcome to the **Battleship Game**! This is a classic naval strategy game implemented in JavaScript using ES6 modules. Play against a computer opponent with options for manual or random ship placement.
 
@@ -26,17 +26,26 @@ Welcome to the **Battleship Game**! This is a classic naval strategy game implem
    ```bash
    git clone https://github.com/mgkdante/Battleship.git
 
- 2. **Navigate to the Project Directory**
-    ```bash
-    cd Battleship
+   ```
+
+2. **Navigate to the Project Directory**
+
+   ```bash
+   cd Battleship
+
+   ```
 
 3. **Get node_modules**
-    ```bash
-    bun install 
+
+   ```bash
+   bun install
+
+   ```
 
 4. **Start game in dev mode**
-    ```bash
-    bun run start
+   ```bash
+   bun run start
+   ```
 
 ## How to Play
 
